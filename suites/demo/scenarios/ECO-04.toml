@@ -1,0 +1,19 @@
+id = "ECO-04"
+title = "Экономика: ГРП на фонде, высокая ставка"
+calc = "economics"
+export_format = "xlsx"
+tags = ["экономика"]
+expected_file = "expected/ECO-04.json"
+
+[input]
+years = [2027, 2028, 2029, 2030, 2031, 2032]
+production_kt = [35, 48, 40, 33, 27, 22]
+capex_musd = [22, 6, 2, 2, 2, 2]
+price_usd_bbl = 60
+bbl_per_t = 7.3
+opex_usd_t = 70
+met_rate = 0.09
+rent_tax_rate = 0.0
+export_share = 0.0
+cit_rate = 0.2
+discount_rate = 0.18

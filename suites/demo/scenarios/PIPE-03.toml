@@ -1,0 +1,15 @@
+id = "PIPE-03"
+title = "Линия тяжёлой нефти, ламинарный режим"
+calc = "pipe"
+export_format = "json"
+tags = ["инженерный", "трубопровод"]
+expected_file = "expected/PIPE-03.json"
+
+[input]
+q_m3h = 6
+d_inner_mm = 100
+length_km = 1.4
+roughness_mm = 0.05
+density_kg_m3 = 935
+viscosity_cp = 450
+dz_m = 0

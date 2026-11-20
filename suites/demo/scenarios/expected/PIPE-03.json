@@ -1,0 +1,9 @@
+{
+ "velocity_m_s": 0.2122065908,
+ "reynolds": 44.09181386,
+ "friction_factor": 1.451516606,
+ "regime": "laminar",
+ "dp_friction_bar": 4.27808487,
+ "dp_static_bar": 0.0,
+ "dp_total_bar": 4.27808487
+}

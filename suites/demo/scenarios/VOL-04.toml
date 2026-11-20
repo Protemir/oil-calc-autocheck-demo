@@ -1,0 +1,15 @@
+id = "VOL-04"
+title = "Запасы: объект Т, низкопроницаемый"
+calc = "stoiip"
+export_format = "json"
+tags = ["инженерный", "запасы"]
+expected_file = "expected/VOL-04.json"
+
+[input]
+area_km2 = 33.4
+h_net_m = 4.3
+porosity = 0.13
+sw = 0.41
+bo = 1.31
+density_t_m3 = 0.85
+rf = 0.18

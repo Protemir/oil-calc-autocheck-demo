@@ -1,0 +1,61 @@
+# Описание тестового API. Под стенд заказчика меняется только этот файл:
+# адрес, авторизация, пути и поля. Код программы не трогаем.
+
+base_url = "http://127.0.0.1:8787"   # можно переопределить переменной OILCHECK_BASE_URL
+timeout_s = 30
+retries = 5          # повторы при 429/502/503/504 и обрыве соединения
+backoff_s = 0.5
+
+[auth]
+type = "bearer"
+token_env = "OILCHECK_TOKEN"   # в CI — секрет
+token = "demo-token"           # запасной токен только для мок-стенда
+
+[version]
+path = "/api/v1/version"
+field = "release"
+
+# 1. Создать кейс со входными данными сценария
+[[steps]]
+name = "create_case"
+method = "POST"
+path = "/api/v1/cases"
+json = { calc = "{calc}", name = "{case_name}", input = "{input}" }
+expect = [201]
+save = { case_id = "id" }
+
+# 2. Запустить расчёт (асинхронная задача)
+[[steps]]
+name = "calculate"
+method = "POST"
+path = "/api/v1/cases/{case_id}/calculate"
+expect = [202]
+save = { job_id = "job_id" }
+
+# 3. Дождаться завершения — место проверки 1: ответ расчёта
+[[steps]]
+name = "wait"
+method = "GET"
+path = "/api/v1/jobs/{job_id}"
+poll = { field = "status", done = ["done"], fail = ["failed"], interval_s = 0.25, timeout_s = 600 }
+layer = { response = "result" }
+
+# 4. Сохранить кейс
+[[steps]]
+name = "save"
+method = "POST"
+path = "/api/v1/cases/{case_id}/save"
+
+# 5. Перечитать сохранённый результат — место проверки 2
+[[steps]]
+name = "read_saved"
+method = "GET"
+path = "/api/v1/cases/{case_id}/result"
+layer = { saved = "result" }
+
+# 6. Скачать выгрузку — место проверки 3
+[[steps]]
+name = "export"
+method = "GET"
+path = "/api/v1/cases/{case_id}/export?format={export_format}"
+file = "export"

@@ -1,0 +1,9 @@
+{
+ "velocity_m_s": 1.576086893,
+ "reynolds": 68143.43021,
+ "friction_factor": 0.02149058665,
+ "regime": "turbulent",
+ "dp_friction_bar": 17.63226747,
+ "dp_static_bar": -0.99439431,
+ "dp_total_bar": 16.63787316
+}

@@ -1,0 +1,15 @@
+id = "VOL-02"
+title = "Запасы: объект Ю1, блок Б"
+calc = "stoiip"
+export_format = "json"
+tags = ["инженерный", "запасы"]
+expected_file = "expected/VOL-02.json"
+
+[input]
+area_km2 = 7.2
+h_net_m = 11.6
+porosity = 0.21
+sw = 0.28
+bo = 1.22
+density_t_m3 = 0.85
+rf = 0.35

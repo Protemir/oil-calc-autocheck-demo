@@ -1,0 +1,91 @@
+name: autocheck
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  unit:
+    name: Автотесты инструмента
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -v
+
+  stable:
+    name: Релиз 3.7.0 — набор должен пройти
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Тестовый стенд (мок API)
+        run: |
+          python -m mockapi --release 3.7.0 --latency 0.3 &
+          sleep 2
+      - name: Автопроверка
+        env:
+          OILCHECK_TOKEN: demo-token   # у заказчика — секрет репозитория
+        run: python -m oilcheck run --workers 8 --out reports/stable
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-stable
+          path: reports/stable
+
+  release-candidate:
+    name: Релиз 3.8.0-rc1 — регрессии должны быть найдены
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Тестовый стенд с регрессиями и 5 % ответов 503
+        run: |
+          python -m mockapi --release 3.8.0-rc1 --latency 0.3 --flaky 0.05 &
+          sleep 2
+      - name: Автопроверка (дважды — проверка повторяемости)
+        id: check
+        continue-on-error: true
+        run: python -m oilcheck run --workers 8 --repeat 2 --out reports/rc
+      - name: Найдено именно то, что внесли, и на нужном слое
+        run: |
+          python - <<'EOF'
+          import json
+          rep = json.load(open("reports/rc/report.json", encoding="utf-8"))
+          got = {s["id"]: sorted(set(s["origin"].values())) for s in rep["scenarios"] if s["status"] != "pass"}
+          want = {"IPR-03": ["response"], "VOL-03": ["saved"], "PIPE-02": ["saved"], "PIPE-04": ["saved"],
+                  "DCA-03": ["export"], "DCA-04": ["export"], "ECO-02": ["export"]}
+          assert got == want, got
+          assert not rep["unstable"], rep["unstable"]
+          print("Все 7 регрессий найдены на своих слоях, результаты повторяемы")
+          EOF
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-rc
+          path: reports/rc
+
+  kpi:
+    name: KPI — ловим ≥ 90 % внесённых отклонений
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m mockapi --release 3.7.0 --latency 0.2 &
+          sleep 2
+      - run: python -m oilcheck mutate --count 300 --seed 7 --mode api --out reports/kpi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-kpi
+          path: reports/kpi

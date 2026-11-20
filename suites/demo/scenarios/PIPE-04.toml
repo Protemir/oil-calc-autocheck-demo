@@ -1,0 +1,15 @@
+id = "PIPE-04"
+title = "Напорный нефтепровод 325×9, спуск 12 м"
+calc = "pipe"
+export_format = "json"
+tags = ["инженерный", "трубопровод"]
+expected_file = "expected/PIPE-04.json"
+
+[input]
+q_m3h = 420
+d_inner_mm = 307
+length_km = 24
+roughness_mm = 0.15
+density_kg_m3 = 845
+viscosity_cp = 6
+dz_m = -12

@@ -1,0 +1,103 @@
+name = "Демо-набор: инженерные и экономические расчёты"
+scenarios = ["scenarios/*.toml"]
+layers = ["response", "saved", "export"]
+
+# Ключевые колонки таблиц: строки сверяются по ключу, а не по номеру строки
+[tables]
+curve = "pwf_atm"
+forecast = "month"
+cashflow = "year"
+
+# ---------- Допуски ----------
+# Проверка проходит, если |факт − эталон| ≤ max(abs, rel·|эталон|).
+# Шаблон без точек (npv_musd) действует на поле в любом месте, «[*]» — любая строка таблицы.
+[tolerance]
+combine = "any"                          # any — достаточно abs или rel; all — нужны оба
+default = { abs = 1e-6, rel = 1e-6 }
+
+[tolerance.fields]
+"*_musd" = { abs = 0.0005, rel = 1e-6 }  # деньги: полтысячи долларов
+irr_pct = { abs = 0.001 }                # 0,001 п.п.
+payback_years = { abs = 0.001 }
+reynolds = { rel = 1e-6 }
+"forecast[*].monthly_t" = { abs = 0.01, rel = 1e-6 }
+
+# Отдельно для места проверки можно ослабить или ужесточить:
+# [tolerance.layers.export]
+# "*_musd" = { abs = 0.001 }
+
+# ---------- Округление в табличной выгрузке ----------
+# Знаков после запятой по документации выгрузки. К допуску добавляется половина последнего разряда.
+[rounding.export]
+pi_m3d_atm = 4
+q_bubble_m3d = 2
+aof_m3d = 2
+q_m3d = 2
+eur_kt = 3
+rate_end_t_d = 2
+rate_t_d = 2
+monthly_t = 1
+cum_kt = 3
+npv_musd = 3
+irr_pct = 2
+payback_years = 2
+pi = 3
+"*_musd" = 3
+pore_volume_mln_m3 = 4
+stoiip_mln_m3 = 4
+stoiip_mln_t = 4
+recoverable_mln_t = 4
+velocity_m_s = 3
+reynolds = 0
+friction_factor = 5
+dp_friction_bar = 3
+dp_static_bar = 3
+dp_total_bar = 3
+
+# ---------- Правила совпадения мест ----------
+# Сохранение не должно менять результат, выгрузка — только округлять.
+[rules.saved_vs_response]
+abs = 1e-9
+rel = 1e-6
+
+[rules.export_vs_saved]
+abs = 1e-9
+rel = 1e-6
+rounding = true
+
+# ---------- Формат выгрузки ----------
+[export.csv]
+delimiter = ";"
+decimal = ","
+block_marker = "## "
+summary_block = "Сводка"
+code_column = "Код"
+value_column = "Значение"
+
+[export.xlsx]
+summary_sheet = "Сводка"
+code_column = "Код"
+value_column = "Значение"
+sheets = { "Денежный поток" = "cashflow", "ИК" = "curve", "Прогноз" = "forecast" }
+
+[export.json]
+summary = "summary"
+tables = "tables"
+
+# Заголовок колонки в выгрузке -> код поля
+[export.columns]
+"Pзаб, атм" = "pwf_atm"
+"Дебит, м3/сут" = "q_m3d"
+"Месяц" = "month"
+"Дебит, т/сут" = "rate_t_d"
+"Добыча за месяц, т" = "monthly_t"
+"Накопл. добыча, тыс. т" = "cum_kt"
+"Год" = "year"
+"Выручка, млн $" = "revenue_musd"
+"НДПИ, млн $" = "met_musd"
+"Рентный налог, млн $" = "rent_tax_musd"
+"OPEX, млн $" = "opex_musd"
+"CAPEX, млн $" = "capex_musd"
+"КПН, млн $" = "cit_musd"
+"ЧДП, млн $" = "net_cf_musd"
+"ДЧДП, млн $" = "disc_cf_musd"

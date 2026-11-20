@@ -1,0 +1,15 @@
+id = "PIPE-01"
+title = "Выкидная линия 114×8, горизонтальная"
+calc = "pipe"
+export_format = "json"
+tags = ["инженерный", "трубопровод"]
+expected_file = "expected/PIPE-01.json"
+
+[input]
+q_m3h = 42
+d_inner_mm = 98
+length_km = 3.2
+roughness_mm = 0.05
+density_kg_m3 = 850
+viscosity_cp = 12
+dz_m = 0

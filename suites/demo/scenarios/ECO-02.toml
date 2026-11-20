@@ -1,0 +1,19 @@
+id = "ECO-02"
+title = "Экономика: блок Б, экспорт 70 %"
+calc = "economics"
+export_format = "xlsx"
+tags = ["экономика"]
+expected_file = "expected/ECO-02.json"
+
+[input]
+years = [2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038]
+production_kt = [0, 80, 260, 340, 330, 300, 270, 240, 215, 190, 170, 150]
+capex_musd = [140, 95, 40, 12, 8, 8, 8, 8, 8, 8, 8, 8]
+price_usd_bbl = 72
+bbl_per_t = 7.3
+opex_usd_t = 58
+met_rate = 0.13
+rent_tax_rate = 0.1
+export_share = 0.7
+cit_rate = 0.2
+discount_rate = 0.12

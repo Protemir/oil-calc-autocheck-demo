@@ -1,0 +1,12 @@
+id = "DCA-03"
+title = "Прогноз добычи: гармоническое падение, 5 лет"
+calc = "decline"
+export_format = "csv"
+tags = ["инженерный", "прогноз"]
+expected_file = "expected/DCA-03.json"
+
+[input]
+qi_t_d = 80
+di_per_year = 0.28
+b = 1
+months = 60

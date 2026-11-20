@@ -1,0 +1,15 @@
+id = "PIPE-02"
+title = "Нефтесборный коллектор 219×8, подъём 35 м"
+calc = "pipe"
+export_format = "json"
+tags = ["инженерный", "трубопровод"]
+expected_file = "expected/PIPE-02.json"
+
+[input]
+q_m3h = 180
+d_inner_mm = 203
+length_km = 8.5
+roughness_mm = 0.1
+density_kg_m3 = 860
+viscosity_cp = 8
+dz_m = 35

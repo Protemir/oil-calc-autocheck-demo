@@ -1,0 +1,13 @@
+id = "IPR-04"
+title = "ИК скважины 412: высокодебитная"
+calc = "ipr"
+export_format = "csv"
+tags = ["инженерный", "ИК"]
+expected_file = "expected/IPR-04.json"
+
+[input]
+p_res_atm = 280
+p_bubble_atm = 60
+q_test_m3d = 200
+pwf_test_atm = 150
+pwf_points_atm = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 280]

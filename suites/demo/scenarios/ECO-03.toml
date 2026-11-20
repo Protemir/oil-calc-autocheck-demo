@@ -1,0 +1,19 @@
+id = "ECO-03"
+title = "Экономика: доразработка, низкая цена"
+calc = "economics"
+export_format = "xlsx"
+tags = ["экономика"]
+expected_file = "expected/ECO-03.json"
+
+[input]
+years = [2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034]
+production_kt = [60, 58, 55, 51, 47, 43, 40, 37]
+capex_musd = [18, 4, 4, 3, 3, 2, 2, 2]
+price_usd_bbl = 38
+bbl_per_t = 7.3
+opex_usd_t = 95
+met_rate = 0.05
+rent_tax_rate = 0.0
+export_share = 0.0
+cit_rate = 0.2
+discount_rate = 0.15

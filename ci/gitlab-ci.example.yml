@@ -1,0 +1,15 @@
+# Пример для GitLab CI: прогон перед релизом, отчёт JUnit во вкладке Tests, HTML в артефактах.
+# Адрес стенда и токен — в переменных CI/CD (OILCHECK_BASE_URL, OILCHECK_TOKEN).
+autocheck:
+  stage: test
+  image: python:3.12-slim
+  script:
+    - python -m oilcheck run --suite suites/customer --api api.toml --workers 8 --out reports
+  artifacts:
+    when: always
+    paths: [reports/]
+    reports:
+      junit: reports/junit.xml
+  rules:
+    - if: $CI_COMMIT_TAG
+    - when: manual

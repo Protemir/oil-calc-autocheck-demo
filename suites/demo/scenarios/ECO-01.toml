@@ -1,0 +1,19 @@
+id = "ECO-01"
+title = "Экономика: блок А, внутренний рынок"
+calc = "economics"
+export_format = "xlsx"
+tags = ["экономика"]
+expected_file = "expected/ECO-01.json"
+
+[input]
+years = [2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036]
+production_kt = [0, 120, 210, 240, 225, 198, 172, 150, 131, 115]
+capex_musd = [85, 60, 25, 10, 5, 5, 5, 5, 5, 5]
+price_usd_bbl = 45
+bbl_per_t = 7.3
+opex_usd_t = 62
+met_rate = 0.09
+rent_tax_rate = 0.0
+export_share = 0.0
+cit_rate = 0.2
+discount_rate = 0.12

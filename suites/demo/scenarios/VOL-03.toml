@@ -1,0 +1,15 @@
+id = "VOL-03"
+title = "Запасы: объект М-II, тяжёлая нефть"
+calc = "stoiip"
+export_format = "json"
+tags = ["инженерный", "запасы"]
+expected_file = "expected/VOL-03.json"
+
+[input]
+area_km2 = 21.0
+h_net_m = 6.1
+porosity = 0.24
+sw = 0.36
+bo = 1.06
+density_t_m3 = 0.912
+rf = 0.21

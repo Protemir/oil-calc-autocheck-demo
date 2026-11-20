@@ -1,0 +1,12 @@
+id = "DCA-04"
+title = "Прогноз добычи: гиперболическое падение, 10 лет"
+calc = "decline"
+export_format = "csv"
+tags = ["инженерный", "прогноз"]
+expected_file = "expected/DCA-04.json"
+
+[input]
+qi_t_d = 30
+di_per_year = 0.22
+b = 0.9
+months = 120

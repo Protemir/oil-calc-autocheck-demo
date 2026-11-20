@@ -1,0 +1,12 @@
+id = "DCA-02"
+title = "Прогноз добычи: экспоненциальное падение, 3 года"
+calc = "decline"
+export_format = "csv"
+tags = ["инженерный", "прогноз"]
+expected_file = "expected/DCA-02.json"
+
+[input]
+qi_t_d = 120
+di_per_year = 0.5
+b = 0
+months = 36

@@ -1,0 +1,13 @@
+id = "IPR-01"
+title = "ИК скважины 101: пласт выше давления насыщения"
+calc = "ipr"
+export_format = "csv"
+tags = ["инженерный", "ИК"]
+expected_file = "expected/IPR-01.json"
+
+[input]
+p_res_atm = 250
+p_bubble_atm = 120
+q_test_m3d = 85
+pwf_test_atm = 180
+pwf_points_atm = [0, 30, 60, 90, 120, 150, 180, 210, 240, 250]

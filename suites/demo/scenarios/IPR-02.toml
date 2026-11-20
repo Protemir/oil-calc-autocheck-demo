@@ -1,0 +1,13 @@
+id = "IPR-02"
+title = "ИК скважины 214: высокий пластовый, низкий Pнас"
+calc = "ipr"
+export_format = "csv"
+tags = ["инженерный", "ИК"]
+expected_file = "expected/IPR-02.json"
+
+[input]
+p_res_atm = 310
+p_bubble_atm = 95
+q_test_m3d = 140
+pwf_test_atm = 160
+pwf_points_atm = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 310]

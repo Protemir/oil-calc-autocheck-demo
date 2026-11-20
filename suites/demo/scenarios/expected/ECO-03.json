@@ -1,0 +1,96 @@
+{
+ "npv_musd": 9.167036798,
+ "irr_pct": 47.82175248,
+ "payback_years": 2.960013928,
+ "pi": 1.319157939,
+ "cashflow": [
+  {
+   "year": 2027,
+   "revenue_musd": 16.644,
+   "met_musd": 0.8322,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 5.7,
+   "capex_musd": 18.0,
+   "cit_musd": 1.07236,
+   "net_cf_musd": -8.96056,
+   "disc_cf_musd": -8.355765285
+  },
+  {
+   "year": 2028,
+   "revenue_musd": 16.0892,
+   "met_musd": 0.80446,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 5.51,
+   "capex_musd": 4.0,
+   "cit_musd": 1.004948,
+   "net_cf_musd": 4.769792,
+   "disc_cf_musd": 3.867699108
+  },
+  {
+   "year": 2029,
+   "revenue_musd": 15.257,
+   "met_musd": 0.76285,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 5.225,
+   "capex_musd": 4.0,
+   "cit_musd": 0.90383,
+   "net_cf_musd": 4.36532,
+   "disc_cf_musd": 3.078020332
+  },
+  {
+   "year": 2030,
+   "revenue_musd": 14.1474,
+   "met_musd": 0.70737,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 4.845,
+   "capex_musd": 3.0,
+   "cit_musd": 0.769006,
+   "net_cf_musd": 4.826024,
+   "disc_cf_musd": 2.95901411
+  },
+  {
+   "year": 2031,
+   "revenue_musd": 13.0378,
+   "met_musd": 0.65189,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 4.465,
+   "capex_musd": 3.0,
+   "cit_musd": 0.634182,
+   "net_cf_musd": 4.286728,
+   "disc_cf_musd": 2.285523263
+  },
+  {
+   "year": 2032,
+   "revenue_musd": 11.9282,
+   "met_musd": 0.59641,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 4.085,
+   "capex_musd": 2.0,
+   "cit_musd": 0.499358,
+   "net_cf_musd": 4.747432,
+   "disc_cf_musd": 2.201002982
+  },
+  {
+   "year": 2033,
+   "revenue_musd": 11.096,
+   "met_musd": 0.5548,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 3.8,
+   "capex_musd": 2.0,
+   "cit_musd": 0.39824,
+   "net_cf_musd": 4.34296,
+   "disc_cf_musd": 1.750853736
+  },
+  {
+   "year": 2034,
+   "revenue_musd": 10.2638,
+   "met_musd": 0.51319,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 3.515,
+   "capex_musd": 2.0,
+   "cit_musd": 0.297122,
+   "net_cf_musd": 3.938488,
+   "disc_cf_musd": 1.380688552
+  }
+ ]
+}

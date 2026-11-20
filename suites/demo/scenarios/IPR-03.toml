@@ -1,0 +1,13 @@
+id = "IPR-03"
+title = "ИК скважины 307: замер ниже давления насыщения"
+calc = "ipr"
+export_format = "csv"
+tags = ["инженерный", "ИК"]
+expected_file = "expected/IPR-03.json"
+
+[input]
+p_res_atm = 210
+p_bubble_atm = 150
+q_test_m3d = 60
+pwf_test_atm = 110
+pwf_points_atm = [0, 30, 60, 90, 120, 150, 180, 210]

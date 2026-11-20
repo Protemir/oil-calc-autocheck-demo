@@ -1,0 +1,74 @@
+{
+ "npv_musd": 11.25029045,
+ "irr_pct": 62.97213832,
+ "payback_years": 2.389342183,
+ "pi": 1.386198866,
+ "cashflow": [
+  {
+   "year": 2027,
+   "revenue_musd": 15.33,
+   "met_musd": 1.3797,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 2.45,
+   "capex_musd": 22.0,
+   "cit_musd": 1.10006,
+   "net_cf_musd": -11.59976,
+   "disc_cf_musd": -10.67844463
+  },
+  {
+   "year": 2028,
+   "revenue_musd": 21.024,
+   "met_musd": 1.89216,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 3.36,
+   "capex_musd": 6.0,
+   "cit_musd": 1.954368,
+   "net_cf_musd": 7.817472,
+   "disc_cf_musd": 6.098784999
+  },
+  {
+   "year": 2029,
+   "revenue_musd": 17.52,
+   "met_musd": 1.5768,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 2.8,
+   "capex_musd": 2.0,
+   "cit_musd": 1.42864,
+   "net_cf_musd": 9.71456,
+   "disc_cf_musd": 6.422707096
+  },
+  {
+   "year": 2030,
+   "revenue_musd": 14.454,
+   "met_musd": 1.30086,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 2.31,
+   "capex_musd": 2.0,
+   "cit_musd": 0.968628,
+   "net_cf_musd": 7.874512,
+   "disc_cf_musd": 4.412011376
+  },
+  {
+   "year": 2031,
+   "revenue_musd": 11.826,
+   "met_musd": 1.06434,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 1.89,
+   "capex_musd": 2.0,
+   "cit_musd": 0.574332,
+   "net_cf_musd": 6.297328,
+   "disc_cf_musd": 2.990110799
+  },
+  {
+   "year": 2032,
+   "revenue_musd": 9.636,
+   "met_musd": 0.86724,
+   "rent_tax_musd": 0.0,
+   "opex_musd": 1.54,
+   "capex_musd": 2.0,
+   "cit_musd": 0.245752,
+   "net_cf_musd": 4.983008,
+   "disc_cf_musd": 2.00512081
+  }
+ ]
+}
