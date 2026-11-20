@@ -64,6 +64,10 @@ def _tol(c):
     return s
 
 
+def _sec(v):
+    return f"{v:.2f} с".replace(".", ",")
+
+
 def _plural(n, one, few, many):
     n = abs(n) % 100
     if 11 <= n <= 19:
@@ -287,8 +291,8 @@ def write_html(rep, path, command=None):
         "<div class='meta'>",
         f"<span>API: <b>{e(str(rep.api_version or rep.api or '—'))}</b></span>",
         f"<span>Прогон: <code>{e(rep.run_id)}</code></span>",
-        f"<span>Начало: {e(rep.started_at)}</span>",
-        f"<span>Длительность: {rep.duration_s} с</span>",
+        f"<span>Начало: {e(rep.started_at.replace('T', ' ').replace('+00:00', ' UTC'))}</span>",
+        f"<span>Длительность: {_sec(rep.duration_s)}</span>",
         f"<span>Параллельно: {rep.workers}</span>",
         f"<span>Повторов: {rep.repeat}</span></div>",
     ]
@@ -303,7 +307,7 @@ def write_html(rep, path, command=None):
                             ("bad" if c["fail"] else "", c["fail"], "с расхождениями"),
                             ("warn" if c["error"] else "", c["error"], "ошибки выполнения"),
                             ("", checks, "проверок полей"), ("bad" if bad_checks else "", bad_checks, "вне допуска"),
-                            ("", f"{rep.duration_s} с", "время прогона")]:
+                            ("", _sec(rep.duration_s), "время прогона")]:
         parts.append(f"<div class='card {cls}'><b>{e(str(val))}</b><span>{label}</span></div>")
     parts.append("</div><h2>Места проверки</h2><div class='cards'>")
     for layer in list(LAYERS) + list(CROSS):
@@ -339,7 +343,7 @@ def write_html(rep, path, command=None):
                      f" <code>{e(r.export_format or '')}</code></small></td><td>{_st(r.status)}</td>")
         for layer in LAYERS:
             parts.append(f"<td>{_layer_cell(r, layer)}</td>")
-        parts.append(f"<td>{_st(cross_st)}</td><td>{e(where_txt)}</td><td class='num'>{r.duration_s:.2f} с</td></tr>")
+        parts.append(f"<td>{_st(cross_st)}</td><td>{e(where_txt)}</td><td class='num'>{_sec(r.duration_s)}</td></tr>")
     parts.append("</tbody></table></div>")
     bad = [r for r in rep.results if r.status != "pass"]
     if bad:
