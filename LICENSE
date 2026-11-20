@@ -1,0 +1,47 @@
+TEMIRLAB — лицензия на ознакомление / Evaluation License
+
+Copyright (c) 2026 TEMIRLAB (ИП «TEMIR KUSSAINOV», Республика Казахстан).
+Все права защищены. All rights reserved.
+
+--- RU ---
+
+Этот репозиторий — демонстрационный прототип. Студия TEMIRLAB подготовила
+его к заявке на технологическую задачу, чтобы показать подход к решению.
+Код опубликован только для ознакомления и оценки.
+
+Разрешено:
+- просматривать исходный код;
+- запускать его локально, чтобы оценить решение.
+
+Без письменного договора с TEMIRLAB запрещено:
+- использовать код или его части в коммерческих, внутренних или иных
+  продуктах и системах;
+- копировать, изменять, распространять и передавать код третьим лицам;
+- создавать на его основе производные работы.
+
+Чтобы использовать решение, заключите договор: https://temirlab.com
+
+Программное обеспечение предоставляется «как есть», без каких-либо
+гарантий. Сторонние компоненты распространяются на условиях их
+собственных лицензий.
+
+--- EN ---
+
+This repository is a demonstration prototype prepared by TEMIRLAB studio
+for a technology task application. The code is published for review and
+evaluation only.
+
+You may:
+- view the source code;
+- run it locally to evaluate the solution.
+
+Without a written agreement with TEMIRLAB you may not:
+- use the code or any part of it in commercial, internal or other
+  products and systems;
+- copy, modify, distribute or transfer the code to third parties;
+- create derivative works based on it.
+
+To use the solution, sign an agreement with us: https://temirlab.com
+
+The software is provided "as is", without warranty of any kind.
+Third-party components are subject to their own licenses.
