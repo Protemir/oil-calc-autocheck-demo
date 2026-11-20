@@ -281,7 +281,7 @@ def write_html(rep, path, command=None):
     lc = rep.layer_counts()
     parts = [
         "<!doctype html><html lang='ru'><head><meta charset='utf-8'>",
-        "<meta name='viewport' content='width=device-width,initial-scale=1'>",
+        "<meta name='viewport' content='width=device-width,initial-scale=1'><meta name='robots' content='noindex'>",
         f"<title>Автопроверка расчётов — {e(rep.suite)}</title><style>{CSS}</style></head><body><div class='wrap'>",
         f"<h1>Автопроверка расчётов: {e(rep.suite)}</h1>",
         "<div class='meta'>",

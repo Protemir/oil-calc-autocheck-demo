@@ -10,8 +10,8 @@ jobs:
     name: Автотесты инструмента
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: python -m unittest discover -s tests -v
@@ -20,8 +20,8 @@ jobs:
     name: Релиз 3.7.0 — набор должен пройти
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Тестовый стенд (мок API)
@@ -32,7 +32,7 @@ jobs:
         env:
           OILCHECK_TOKEN: demo-token   # у заказчика — секрет репозитория
         run: python -m oilcheck run --workers 8 --out reports/stable
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: report-stable
@@ -42,18 +42,16 @@ jobs:
     name: Релиз 3.8.0-rc1 — регрессии должны быть найдены
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Тестовый стенд с регрессиями и 5 % ответов 503
         run: |
           python -m mockapi --release 3.8.0-rc1 --latency 0.3 --flaky 0.05 &
           sleep 2
-      - name: Автопроверка (дважды — проверка повторяемости)
-        id: check
-        continue-on-error: true
-        run: python -m oilcheck run --workers 8 --repeat 2 --out reports/rc
+      - name: Автопроверка (дважды — проверка повторяемости), код 1 = найдены расхождения
+        run: python -m oilcheck run --workers 8 --repeat 2 --out reports/rc || test $? -eq 1
       - name: Найдено именно то, что внесли, и на нужном слое
         run: |
           python - <<'EOF'
@@ -66,7 +64,7 @@ jobs:
           assert not rep["unstable"], rep["unstable"]
           print("Все 7 регрессий найдены на своих слоях, результаты повторяемы")
           EOF
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: report-rc
@@ -76,15 +74,15 @@ jobs:
     name: KPI — ловим ≥ 90 % внесённых отклонений
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: |
           python -m mockapi --release 3.7.0 --latency 0.2 &
           sleep 2
       - run: python -m oilcheck mutate --count 300 --seed 7 --mode api --out reports/kpi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: report-kpi
